@@ -1,5 +1,6 @@
 import nextcord
 from nextcord.ext import commands
+from nextcord import Game, Client
 import datetime
 import json
 import os
@@ -7,12 +8,13 @@ import os
 SKULL_EMOJI = "💀"
 DEFAULT_REQUIRED_REACTIONS = 5
 
+
 class SkullTrackerBot(commands.Bot):
     def __init__(self):
         intents = nextcord.Intents.default()
         intents.message_content = True
-        super().__init__(command_prefix='!', intents=intents)
-        
+        activity = nextcord.Game(name="Detecting skulls server wide")
+        super().__init__(command_prefix='!', intents=intents, activity=activity)
         self.config = {}
         self.highlighted_messages = {}
         self.load_config()
@@ -195,4 +197,4 @@ async def on_raw_reaction_remove(payload):
             embed = await bot.create_highlight_embed(message, skull_count)
             await highlight_message.edit(embed=embed)
 
-bot.run('banana bread :D')
+bot.run('pumpkin bread :D')
