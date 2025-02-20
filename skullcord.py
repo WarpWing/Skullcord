@@ -13,7 +13,7 @@ class SkullTrackerBot(commands.Bot):
     def __init__(self):
         intents = nextcord.Intents.default()
         intents.message_content = True
-        activity = nextcord.Game(name="Detecting skulls server wide")
+        activity = nextcord.Game(name="Detecting skulls server wide.")
         super().__init__(command_prefix='!', intents=intents, activity=activity)
         self.config = {}
         self.highlighted_messages = {}
